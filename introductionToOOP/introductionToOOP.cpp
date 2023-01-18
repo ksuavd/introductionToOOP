@@ -9,19 +9,19 @@ private:
     double y;
     
 public: 
-    int GetX()//возвращаем значение переменной х
+    double GetX()//возвращаем значение переменной х
     {
         return x;
     }
-    void SetX(int valeX)//устанавливаем значение x
+    void SetX(double valeX)//устанавливаем значение x
     {
         x = valeX;
     }
-    int GetY()//возвращаем значение переменной y
+    double GetY()//возвращаем значение переменной y
     {
         return y;
     }
-    void SetY(int valeY)//устанавливаем значение y
+    void SetY(double valeY)//устанавливаем значение y
     {
         y = valeY;
     }
@@ -29,10 +29,15 @@ public:
     {
         cout << "X = " << x << "\t Y = " << y << endl;
     }
-
+    double distance (Point dot)
+    {
+        
+     //   return distance;
+    }
 
 }; 
 
+double distance(Point A, Point B);
 
 
 int main()
@@ -47,8 +52,18 @@ int main()
     A.SetX(2);
     A.SetY(3);
     A.Print();
-    
+    Point B; 
+    B.SetX(5);
+    B.SetY(8);
+    B.Print();
+    cout << distance(A, B) << endl;
 
- 
 }
 
+double distance(Point A, Point B)
+{
+    double Xdot = A.GetX() - B.GetX();
+    double Ydot = A.GetY() - B.GetY();
+    double distance = sqrt(Xdot * Xdot + Ydot * Ydot);
+    return distance;
+}
