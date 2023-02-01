@@ -1,0 +1,23 @@
+=====================================================================
+02.12.2022 15:24:05
+Task #39235098
+Task contextru.ubs.ssbs.billing.BillingTaskContext@559fdd96[
+springServiceName=billingTaskService,
+springServiceMethodName=calculateContract,
+taskManager=ru.ubs.ssbs.billing.BillingTaskServiceImpl$BillingTaskManager,
+threadCount=32,
+taskState=WORK,
+message=расчет прошлых периодов домовых услуг за июля 2022,
+exchangeFormatId=22122706,
+userTaskId=39235098,
+rangeCount=2,
+rangeStart=0,
+organisationDatasourceSchema=ssbs-40211,
+inputParameters=ru.ubs.ssbs.domain.ContractCriteria@2c88dde8,
+goodCount=1031,
+skipCount=0,
+failedCount=0]
+=====================================================================
+null
+
+java.lang.NullPointerException

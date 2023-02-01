@@ -1,0 +1,55 @@
+=====================================================================
+14.03.2022 13:38:24
+Task #25877223
+Task contextru.ubs.ssbs.exchange.PublishContractBillingTaskServiceContext@18190106[
+springServiceName=publishContractBillingTaskService,
+springServiceMethodName=transformExchangeParameters,
+taskManager=ru.ubs.ssbs.exchange.reports.PublishContractBillingTaskServiceImpl$PublishContractBillingTaskServiceTaskManager,
+threadCount=1,
+taskState=WORK,
+message=Публикация расчётов,
+exchangeFormatId=9809049,
+userTaskId=25877223,
+rangeCount=25,
+rangeStart=0,
+organisationDatasourceSchema=ssbs-40211,
+inputParameters=ru.ubs.ssbs.billing.ContractBillingTaskCriteria@4a9233ff,
+goodCount=959,
+skipCount=0,
+failedCount=6]
+=====================================================================
+<<Не закрыт предыдущий платежный период по контракту 50128484803, сейчас закрывался период 01.02.2022, 01.03.2022>>
+
+java.lang.Exception: <<Не закрыт предыдущий платежный период по контракту 50128484803, сейчас закрывался период 01.02.2022, 01.03.2022>>
+	at ru.ubs.ssbs.utils.ExceptionUtils.throwException(ExceptionUtils.java:18)
+	at ru.ubs.ssbs.account.AccountContractHelper.validateAccountContract(AccountContractHelper.java:2081)
+	at ru.ubs.ssbs.exchange.reports.PublishContractBillingTaskServiceImpl$3.onObject(PublishContractBillingTaskServiceImpl.java:302)
+	at ru.ubs.ssbs.exchange.reports.PublishContractBillingTaskServiceImpl$3.onObject(PublishContractBillingTaskServiceImpl.java:273)
+	at ru.ubs.ssbs.exchange.TaskThreadReader.read(TaskThreadReader.java:31)
+	at ru.ubs.ssbs.exchange.reports.PublishContractBillingTaskServiceImpl.handlePublishContractBillingTask(PublishContractBillingTaskServiceImpl.java:320)
+	at ru.ubs.ssbs.exchange.reports.PublishContractBillingTaskServiceBase.publishContractBillingTask(PublishContractBillingTaskServiceBase.java:176)
+	at jdk.internal.reflect.GeneratedMethodAccessor2528.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:283)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at com.sun.proxy.$Proxy247.publishContractBillingTask(Unknown Source)
+	at jdk.internal.reflect.GeneratedMethodAccessor2527.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at ru.ubs.utils.ObjectUtils.invokeMethod(ObjectUtils.java:384)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.evaluateCurrentContextMethod(TaskServiceImpl.java:815)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.executeBySingleThreadContext(TaskServiceImpl.java:850)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.lambda$null$36(TaskServiceImpl.java:739)
+	at ru.ubs.ssbs.utils.TransactionUtils.inTransaction(TransactionUtils.java:23)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.lambda$null$39(TaskServiceImpl.java:737)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1764)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)

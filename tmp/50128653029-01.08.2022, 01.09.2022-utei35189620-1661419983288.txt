@@ -1,0 +1,59 @@
+=====================================================================
+25.08.2022 12:33:04
+Task #35189588
+Task contextru.ubs.ssbs.billing.BillingTaskContext@38eb333d[
+springServiceName=billingTaskService,
+springServiceMethodName=calculateSingleContract,
+taskManager=ru.ubs.ssbs.billing.BillingTaskServiceImpl$BillingTaskManager,
+threadCount=1,
+taskState=WORK,
+message=Расчет использующих ДПУ услуг,
+exchangeFormatId=2544029,
+userTaskId=35189588,
+rangeCount=1,
+rangeStart=0,
+organisationDatasourceSchema=ssbs-40211,
+inputParameters=ru.ubs.ssbs.domain.ContractCriteria@2a258e26,
+goodCount=1,
+skipCount=0,
+failedCount=0]
+=====================================================================
+Cannot invoke "java.lang.Boolean.booleanValue()" because the return value of "ru.ubs.ssbs.billing.rule.RuleCalcByBuildingMeasureUnitBy354StatementRev3Impl.getЕслиНетРасходаСчитаемНорматив()" is null
+
+java.lang.NullPointerException: Cannot invoke "java.lang.Boolean.booleanValue()" because the return value of "ru.ubs.ssbs.billing.rule.RuleCalcByBuildingMeasureUnitBy354StatementRev3Impl.getЕслиНетРасходаСчитаемНорматив()" is null
+	at ru.ubs.ssbs.billing.rule.RuleCalcByBuildingMeasureUnitBy354StatementRev3Impl.calculateDistributedResource(RuleCalcByBuildingMeasureUnitBy354StatementRev3Impl.java:143)
+	at ru.ubs.ssbs.billing.rule.RuleCalcByBuildingMeasureUnitBy354StatementRev3Impl.calculate(RuleCalcByBuildingMeasureUnitBy354StatementRev3Impl.java:63)
+	at ru.ubs.ssbs.billing.BillingServiceHelper.calculateFacilityRule(BillingServiceHelper.java:259)
+	at ru.ubs.ssbs.billing.BillingServiceHelper.calculateFacilityRule(BillingServiceHelper.java:368)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl.calculateContractItem(BillingTaskServiceImpl.java:1458)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl.calculateTaskBillByUseBuildingMU(BillingTaskServiceImpl.java:1026)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl$2.onObject(BillingTaskServiceImpl.java:461)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl$2.onObject(BillingTaskServiceImpl.java:453)
+	at ru.ubs.ssbs.exchange.TaskThreadReader.read(TaskThreadReader.java:31)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl.handleCalculateUsingBuildingMeasureUnitFacilities(BillingTaskServiceImpl.java:479)
+	at ru.ubs.ssbs.billing.BillingTaskServiceBase.calculateUsingBuildingMeasureUnitFacilities(BillingTaskServiceBase.java:786)
+	at jdk.internal.reflect.GeneratedMethodAccessor1157.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:283)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy233.calculateUsingBuildingMeasureUnitFacilities(Unknown Source)
+	at jdk.internal.reflect.GeneratedMethodAccessor1158.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at ru.ubs.utils.ObjectUtils.invokeMethod(ObjectUtils.java:384)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.evaluateCurrentContextMethod(TaskServiceImpl.java:816)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.executeBySingleThreadContext(TaskServiceImpl.java:851)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.lambda$executeByThreadContext$36(TaskServiceImpl.java:740)
+	at ru.ubs.ssbs.utils.TransactionUtils.inTransaction(TransactionUtils.java:23)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.lambda$executeByThreadContext$39(TaskServiceImpl.java:738)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)

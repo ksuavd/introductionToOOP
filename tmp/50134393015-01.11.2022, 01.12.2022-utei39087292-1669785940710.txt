@@ -1,0 +1,54 @@
+=====================================================================
+30.11.2022 08:25:40
+Task #39087287
+Task contextru.ubs.ssbs.billing.BillingTaskContext@1788e515[
+springServiceName=billingTaskService,
+springServiceMethodName=calculateContract,
+taskManager=ru.ubs.ssbs.billing.BillingTaskServiceImpl$BillingTaskManager,
+threadCount=32,
+taskState=WORK,
+message=Расчет заданного периода,
+exchangeFormatId=22122706,
+userTaskId=39087287,
+rangeCount=2,
+rangeStart=0,
+organisationDatasourceSchema=ssbs-40211,
+inputParameters=ru.ubs.ssbs.domain.ContractCriteria@69677144,
+goodCount=0,
+skipCount=0,
+failedCount=1]
+=====================================================================
+Невозможно произвести расчет, есть расчет следующего периода 50134393015
+
+java.lang.Exception: Невозможно произвести расчет, есть расчет следующего периода 50134393015
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl.calculateTaskBill(BillingTaskServiceImpl.java:266)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl$1.onObject(BillingTaskServiceImpl.java:239)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl$1.onObject(BillingTaskServiceImpl.java:231)
+	at ru.ubs.ssbs.exchange.TaskThreadReader.read(TaskThreadReader.java:31)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl.handleCalculateTaskBill(BillingTaskServiceImpl.java:254)
+	at ru.ubs.ssbs.billing.BillingTaskServiceBase.calculateTaskBill(BillingTaskServiceBase.java:453)
+	at jdk.internal.reflect.GeneratedMethodAccessor444.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:283)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy231.calculateTaskBill(Unknown Source)
+	at jdk.internal.reflect.GeneratedMethodAccessor2178.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at ru.ubs.utils.ObjectUtils.invokeMethod(ObjectUtils.java:384)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.evaluateCurrentContextMethod(TaskServiceImpl.java:816)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.executeBySingleThreadContext(TaskServiceImpl.java:851)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.lambda$executeByThreadContext$36(TaskServiceImpl.java:740)
+	at ru.ubs.ssbs.utils.TransactionUtils.inTransaction(TransactionUtils.java:23)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.lambda$executeByThreadContext$39(TaskServiceImpl.java:738)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)

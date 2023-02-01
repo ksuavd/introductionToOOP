@@ -1,0 +1,52 @@
+=====================================================================
+19.12.2022 14:59:58
+Task #39560794
+Task contextru.ubs.ssbs.billing.BillingTaskContext@5da9c4d7[
+springServiceName=billingTaskService,
+springServiceMethodName=calculateSingleContract,
+taskManager=ru.ubs.ssbs.billing.BillingTaskService$BillingTaskManager,
+threadCount=1,
+taskState=WORK,
+message=расчет прошлых периодов за сентября 2022,
+exchangeFormatId=2544029,
+userTaskId=39560794,
+rangeCount=1,
+rangeStart=0,
+organisationDatasourceSchema=ssbs-40211,
+inputParameters=ru.ubs.ssbs.domain.ContractCriteria@6fe5e395,
+goodCount=1,
+skipCount=0,
+failedCount=0]
+=====================================================================
+Не найдены даты расчета 01.09.2022, 01.10.2022 для дома. Для добавления дат расчета обратитесь в службу экспертной поддержки.
+
+java.lang.NullPointerException: Не найдены даты расчета 01.09.2022, 01.10.2022 для дома. Для добавления дат расчета обратитесь в службу экспертной поддержки.
+	at ru.ubs.ssbs.billing.BillingServiceHelper.getCalculatedPeriod(BillingServiceHelper.java:1270)
+	at ru.ubs.ssbs.billing.BillingTaskService.calculateTaskRevise(BillingTaskService.java:1369)
+	at ru.ubs.ssbs.billing.BillingTaskService$5.onObject(BillingTaskService.java:1119)
+	at ru.ubs.ssbs.billing.BillingTaskService$5.onObject(BillingTaskService.java:1111)
+	at ru.ubs.ssbs.exchange.TaskThreadReader.read(TaskThreadReader.java:31)
+	at ru.ubs.ssbs.billing.BillingTaskService.calculateTaskRevise(BillingTaskService.java:1137)
+	at ru.ubs.ssbs.billing.BillingTaskService$$FastClassBySpringCGLIB$$3b128732.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:737)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:283)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:672)
+	at ru.ubs.ssbs.billing.BillingTaskService$$EnhancerBySpringCGLIB$$b997f668.calculateTaskRevise(<generated>)
+	at jdk.internal.reflect.GeneratedMethodAccessor1221.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at ru.ubs.utils.ObjectUtils.invokeMethod(ObjectUtils.java:384)
+	at ru.ubs.ssbs.exchange.TaskService.evaluateCurrentContextMethod(TaskService.java:839)
+	at ru.ubs.ssbs.exchange.TaskService.executeBySingleThreadContext(TaskService.java:874)
+	at ru.ubs.ssbs.exchange.TaskService.lambda$executeByThreadContext$36(TaskService.java:763)
+	at ru.ubs.ssbs.utils.TransactionUtils.inTransaction(TransactionUtils.java:23)
+	at ru.ubs.ssbs.exchange.TaskService.lambda$executeByThreadContext$39(TaskService.java:761)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)

@@ -1,0 +1,23 @@
+=====================================================================
+04.05.2022 16:01:10
+Task #28956501
+Task contextru.ubs.ssbs.billing.BillingTaskContext@22649fe3[
+springServiceName=billingTaskService,
+springServiceMethodName=calculateContract,
+taskManager=ru.ubs.ssbs.billing.BillingTaskServiceImpl$BillingTaskManager,
+threadCount=32,
+taskState=WORK,
+message=Расчет домовых услуг,
+exchangeFormatId=22122706,
+userTaskId=28956501,
+rangeCount=2,
+rangeStart=0,
+organisationDatasourceSchema=ssbs-40211,
+inputParameters=ru.ubs.ssbs.domain.ContractCriteria@403154d6,
+goodCount=526,
+skipCount=0,
+failedCount=0]
+=====================================================================
+null
+
+java.lang.NullPointerException

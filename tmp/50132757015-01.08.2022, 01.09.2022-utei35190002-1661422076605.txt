@@ -1,0 +1,59 @@
+=====================================================================
+25.08.2022 13:07:58
+Task #35189971
+Task contextru.ubs.ssbs.billing.BillingTaskContext@41c829b6[
+springServiceName=billingTaskService,
+springServiceMethodName=calculateContract,
+taskManager=ru.ubs.ssbs.billing.BillingTaskServiceImpl$BillingTaskManager,
+threadCount=32,
+taskState=WORK,
+message=Расчет заданного периода,
+exchangeFormatId=22122706,
+userTaskId=35189971,
+rangeCount=2,
+rangeStart=0,
+organisationDatasourceSchema=ssbs-40211,
+inputParameters=ru.ubs.ssbs.domain.ContractCriteria@fe95e54,
+goodCount=150,
+skipCount=0,
+failedCount=1]
+=====================================================================
+Не указана общая площадь в контракте (Услуга: "Квартплата, Содержание и ремонт общего имущества, Содержание и ремонт общего имущества ПН43", период: 01.08.2022, 01.09.2022)
+
+ru.ubs.ssbs.billing.rule.RuleException: Не указана общая площадь в контракте (Услуга: "Квартплата, Содержание и ремонт общего имущества, Содержание и ремонт общего имущества ПН43", период: 01.08.2022, 01.09.2022)
+	at ru.ubs.ssbs.utils.ExceptionUtils.throwRuleException(ExceptionUtils.java:47)
+	at ru.ubs.ssbs.billing.rule.RuleCalcByTotalSquareImpl.calculate(RuleCalcByTotalSquareImpl.java:56)
+	at ru.ubs.ssbs.billing.BillingServiceHelper.calculateFacilityRule(BillingServiceHelper.java:259)
+	at ru.ubs.ssbs.billing.BillingServiceHelper.calculateFacilityRule(BillingServiceHelper.java:368)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl.calculateContractItem(BillingTaskServiceImpl.java:1458)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl.calculateTaskBill(BillingTaskServiceImpl.java:318)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl$1.onObject(BillingTaskServiceImpl.java:233)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl$1.onObject(BillingTaskServiceImpl.java:225)
+	at ru.ubs.ssbs.exchange.TaskThreadReader.read(TaskThreadReader.java:31)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl.handleCalculateTaskBill(BillingTaskServiceImpl.java:248)
+	at ru.ubs.ssbs.billing.BillingTaskServiceBase.calculateTaskBill(BillingTaskServiceBase.java:453)
+	at jdk.internal.reflect.GeneratedMethodAccessor803.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:283)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy229.calculateTaskBill(Unknown Source)
+	at jdk.internal.reflect.GeneratedMethodAccessor3431.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at ru.ubs.utils.ObjectUtils.invokeMethod(ObjectUtils.java:384)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.evaluateCurrentContextMethod(TaskServiceImpl.java:816)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.executeBySingleThreadContext(TaskServiceImpl.java:851)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.lambda$executeByThreadContext$36(TaskServiceImpl.java:740)
+	at ru.ubs.ssbs.utils.TransactionUtils.inTransaction(TransactionUtils.java:23)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.lambda$executeByThreadContext$39(TaskServiceImpl.java:738)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)

@@ -1,0 +1,62 @@
+=====================================================================
+01.04.2022 16:24:42
+Task #27106147
+Task contextru.ubs.ssbs.billing.BillingTaskContext@20c3953b[
+springServiceName=billingTaskService,
+springServiceMethodName=calculateContract,
+taskManager=ru.ubs.ssbs.billing.BillingTaskServiceImpl$BillingTaskManager,
+threadCount=4,
+taskState=WORK,
+message=Расчет домовых услуг,
+exchangeFormatId=170,
+userTaskId=27106147,
+rangeCount=3,
+rangeStart=0,
+organisationDatasourceSchema=ssbs-40211,
+inputParameters=ru.ubs.ssbs.domain.ContractCriteria@6b801f20,
+goodCount=404,
+skipCount=0,
+failedCount=6]
+=====================================================================
+Не удалось найти норматив в сторедже по причине ru.ubs.ssbs.billing.rule.RuleException: Не указана благоустроенность дома (Услуга: "Коммунальные услуги, Общедомовые нужды Подача воды, Общедомовые нужды Подача воды (ЖСК 47)", период: 01.03.2022, 01.04.2022) (Услуга: "Коммунальные услуги, Общедомовые нужды Подача воды, Общедомовые нужды Подача воды (ЖСК 47)", период: 01.03.2022, 01.04.2022)
+
+ru.ubs.ssbs.billing.rule.RuleException: Не удалось найти норматив в сторедже по причине ru.ubs.ssbs.billing.rule.RuleException: Не указана благоустроенность дома (Услуга: "Коммунальные услуги, Общедомовые нужды Подача воды, Общедомовые нужды Подача воды (ЖСК 47)", период: 01.03.2022, 01.04.2022) (Услуга: "Коммунальные услуги, Общедомовые нужды Подача воды, Общедомовые нужды Подача воды (ЖСК 47)", период: 01.03.2022, 01.04.2022)
+	at ru.ubs.ssbs.utils.ExceptionUtils.throwRuleException(ExceptionUtils.java:47)
+	at ru.ubs.ssbs.billing.rule.RuleCalcODNQuotaByHabitableLivabilityCodeRev3_HQLImpl.getODNQuota(RuleCalcODNQuotaByHabitableLivabilityCodeRev3_HQLImpl.java:165)
+	at ru.ubs.ssbs.billing.rule.RuleCalcODNQuotaByHabitableLivabilityCodeRev3_HQLImpl.calculate(RuleCalcODNQuotaByHabitableLivabilityCodeRev3_HQLImpl.java:57)
+	at ru.ubs.ssbs.billing.BillingServiceHelper.calculateFacilityRule(BillingServiceHelper.java:257)
+	at ru.ubs.ssbs.billing.BillingServiceHelper.calculateFacilityRule(BillingServiceHelper.java:366)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl.calculateContractItem(BillingTaskServiceImpl.java:1347)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl.calculateContractItem(BillingTaskServiceImpl.java:1327)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl.calculateTaskBillByBuilding(BillingTaskServiceImpl.java:1001)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl.access$300(BillingTaskServiceImpl.java:50)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl$4.onObject(BillingTaskServiceImpl.java:950)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl$4.onObject(BillingTaskServiceImpl.java:942)
+	at ru.ubs.ssbs.exchange.TaskThreadReader.read(TaskThreadReader.java:31)
+	at ru.ubs.ssbs.billing.BillingTaskServiceImpl.handleCalculateTaskBillByBuilding(BillingTaskServiceImpl.java:969)
+	at ru.ubs.ssbs.billing.BillingTaskServiceBase.calculateTaskBillByBuilding(BillingTaskServiceBase.java:652)
+	at jdk.internal.reflect.GeneratedMethodAccessor1661.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:283)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at com.sun.proxy.$Proxy234.calculateTaskBillByBuilding(Unknown Source)
+	at jdk.internal.reflect.GeneratedMethodAccessor1658.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at ru.ubs.utils.ObjectUtils.invokeMethod(ObjectUtils.java:384)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.evaluateCurrentContextMethod(TaskServiceImpl.java:815)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.executeBySingleThreadContext(TaskServiceImpl.java:850)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.lambda$null$36(TaskServiceImpl.java:739)
+	at ru.ubs.ssbs.utils.TransactionUtils.inTransaction(TransactionUtils.java:23)
+	at ru.ubs.ssbs.exchange.TaskServiceImpl.lambda$null$39(TaskServiceImpl.java:737)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1764)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
