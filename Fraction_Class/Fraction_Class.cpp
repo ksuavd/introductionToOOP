@@ -90,10 +90,30 @@ public:
         cout << "Destructor:\t\t" << this << endl;
     }
     //Operators
+    Fraction& operator=(const Fraction& other)//перегрузка оператора присваивания
+    {
+        this->integer = other.integer;
+        this->numerator = other.numerator;
+        this->denominator = other.denominator;
+        cout << "CopyAssigment:\t\t" << this << endl;
+        return *this;
+    }
+    Fraction& operator*=(const Fraction& other)
+    {
+        return *this = *this * other;
+    }
 
+    //Type-cast operators
+    explicit   operator int()const
+    {
+        return Fraction(*this).to_proper().integer;
+    }
 
-   
-
+    explicit   operator double()const
+    {
+        return  ((double)numerator/ (double)denominator)+ (double)integer;
+    }
+  
     //Metods
 
     Fraction& to_proper()//целую часть интегрирует в числитель
@@ -130,7 +150,24 @@ public:
         else if (integer == 0)cout << 0;
         cout << endl;
     }
-   
+
+    Fraction& reduce()
+    {
+        int more, less, rest = 0;//большее , меньшее , остаток
+        if (numerator > denominator)more = numerator, less = denominator;//выясняем кто больше
+        else less = numerator, more = denominator;
+        do
+        {
+            rest = more % less; //в остаток записываем рез. от деления большего на меньшее 
+            more = less;
+            less = rest;
+        } while (rest);
+        int GCD = more;//GCD-Grates Common Divisor (наибольший общий делитель)
+        numerator /= GCD;
+        denominator /= GCD;
+        return *this;
+    }
+
 };
 
 Fraction operator*(Fraction left, Fraction right)
@@ -150,7 +187,7 @@ Fraction operator*(Fraction left, Fraction right)
     {
        left.get_numerator() * right.get_numerator(),
        left.get_denominator() * right.get_denominator()
-    }.to_proper();
+    }.to_proper().reduce();
     
 }
 Fraction operator/(Fraction left, Fraction right)
@@ -206,15 +243,51 @@ bool operator < (Fraction left, Fraction right)
 {
     return  left.to_improper().get_numerator() * right.get_denominator() < right.to_improper().get_numerator() * left.get_denominator();
 }
+bool operator>=(const Fraction& left, const Fraction& right)
+{
+    //return left > right || left == right; //больше или равно - это НЕ меньше
+    return !(left < right);
+}
+bool operator<=(const Fraction& left, const Fraction& right)
+{
+  //  return left < right || left == right;
+    return !(left > right);
+}
+ostream& operator<< (ostream& os, const Fraction& obj)
+{
+    if (obj.get_integer())os << obj.get_integer();
+    if (obj.get_numerator())
+    {
+        if (obj.get_integer())os << "(";
+        os << obj.get_numerator() << "/" << obj.get_denominator();
+        if (obj.get_integer())os << ")";
+    }
 
+    else os << 0; 
+    return os;
+}
+istream& operator>> (istream& is, Fraction& obj)
+{
+    int integer;
+    int numerator;
+    int denominator;
+    is >> integer >> numerator >> denominator;
+    obj.set_integer(integer);
+    obj.set_numerator(numerator);
+    obj.set_denominator(denominator);
+    return is;
+}
 
 
 //#define CONSTRUCTORS_CHECK
-
+//#define COMPARISON_OPERATORS
+//#define OPERATORS2
+#define HOMR_WORK_1
 int main()
 {
-#ifdef CONSTRUCTORS_CHECK
     setlocale(LC_ALL, "");
+#ifdef CONSTRUCTORS_CHECK
+   
     Fraction A;
     A.print();
 
@@ -230,6 +303,7 @@ int main()
     Fraction E=D;
     E.print();
 #endif
+#ifdef COMPARISON_OPERATORS
     double a = 2;
     double b = 3;
     double c = a * b;
@@ -247,11 +321,52 @@ int main()
     Fraction D = A / B;
     D.print();
 
-    /*A *= B;
-    A.print();*/
+    A *= B;
+    A.print();
     (B + A).print();
     (B - A).print();
     cout << (B==A) << endl;
     cout << (A > B) << endl;
     cout << (A < B) << endl;
+    A = A * B;
+
+    cout << (Fraction(1, 3) <= Fraction(5,11)) << endl;
+#endif  
+#ifdef OPERATORS2
+    Fraction A  (5,6,7); 
+    A.print();
+    cout << A << endl;
+
+    Fraction B; 
+    cout << "Введите дробь: "; cin >> B; cout << B << endl;
+#endif
+    //explicit -явный 
+    /*
+    1.   Перобразование других типов в наш;
+       Single-argument constructor;
+       Assignment operator;
+    
+    2. Перобразование и нашего типа в другие типы;
+
+    */
+
+    Fraction A(2,3,4);
+    cout << A << endl;
+    int a = (int)A;
+    cout << a << endl;
+
+    //Home Work
+
+    Fraction B(2, 3, 4);
+    double b = (double)B;
+    cout << b << endl;
+
+    /*
+    Fraction C = 2.75;
+    cout << C << endl;
+    */
+   
+
+    
+
 }
