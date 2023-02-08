@@ -53,13 +53,10 @@ void print()const
 }
 
 };
-String operator+(char* str)
+/*String operator+(char* str)
 {
-    str temp;
-    strcpy(temp.string, string);
-    strcat(temp.string, str);
-    return temp;
-}
+    
+}*/
 std::ostream& operator<<(std::ostream& os, const String& obj)//перегрузка cout
 {
     return    os << "Str:\t" << obj.get_str();
