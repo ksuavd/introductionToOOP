@@ -1,8 +1,9 @@
 ﻿// String.cpp 
 #include <iostream>
-
+#include <cstring>
 using namespace std;
-//String operator+ (String left, String right);
+class String;
+
 class String
 {
     int size;// размер строки
@@ -44,7 +45,11 @@ String(const char* str)
     cout << "Destructor:\t" << this << endl;
 }
 //Operators
-
+//String operator+(const String& other)
+//{
+//   
+//    return newStr;
+//}
 //Metods
 void print()const
 {
@@ -53,10 +58,7 @@ void print()const
 }
 
 };
-/*String operator+(char* str)
-{
-    
-}*/
+
 std::ostream& operator<<(std::ostream& os, const String& obj)//перегрузка cout
 {
     return    os << "Str:\t" << obj.get_str();
@@ -71,10 +73,9 @@ int main()
     String str2 = "World";
     cout << str2 << endl;
 
-
-   // String str3 = str1 + str2;
-    //cout << str3 << endl;
-
-
+/*
+   String str3 = str1 + str2;
+   cout << str3 << endl;
+   */
 }
 
