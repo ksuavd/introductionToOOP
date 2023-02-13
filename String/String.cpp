@@ -3,7 +3,11 @@
 using std::cin;
 using std::cout;
 using std::endl;
+
 using namespace std;
+
+///////////////////////////////////////////////////////////////////////////////////////
+////////////ОБЪЯВЛЕНИЕ КЛАССА -CLASS DECLARATION//////////////////////////////////////
 class String;
 String operator+(const String& left, const String& right);
 class String
@@ -12,36 +16,68 @@ class String
     char* str;//адрес строки в динамической памяти
 
 public:
-    int get_size()const
-    {
-        return size;
-    }
-    const char* get_str()const
-    {
-        return str;
-    }
-    char* get_str()
-    {
-        return str;
-    }
+    int get_size()const;
+    const char* get_str()const;
+    char* get_str();
+  
+    //Constructors
+    explicit String(int size = 80);
+    String(const char* str);
+    String(const String& other);
+    String(String&& other)noexcept;
+
+    //Destructor
+    ~String();
+
+    //OPERATORS
+    String& operator=(const String& other);
+    String& operator=(String&& other)noexcept;
+    String& operator+=(const String& other);
+
+    const char& operator[](int i)const;
+    char& operator[](int i);
+
+    //METODS
+    void print()const;
+
+};
+///////////////////////////////////////////////////////////////////////////////////////
+////////////КОНЕЦ ОБЪЯВЛЕНИЯ КЛАССА -CLASS DECLARATION END/////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+////////////ОПРЕДЕЛЕНИЕ КЛАССА -CLASS DEFENISION//////////////////////////////////////
+int String::get_size()const
+{
+    return size;
+}
+const char* String::get_str()const
+{
+    return str;
+}
+char* String::get_str()
+{
+    return str;
+}
 
 //Constructors
-    explicit String(int size = 80):size(size), str (new char[size] {}) //конст-р с параметром по умолчанию
+ String::String(int size) :size(size), str(new char[size] {}) //конст-р с параметром по умолчанию
 {
     cout << "DefConstructor:\t" << this << endl;
 }
-    String(const char* str) :String (strlen(str)+1)
- {
+String::String(const char* str) : String(strlen(str) + 1)
+{
     for (int i = 0; i < size; i++)  this->str[i] = str[i];
     cout << "1ArgConstructor:" << this << endl;
 }
-String (const String& other):String(other.str)
+String::String(const String& other):String(other.str)
 {
     //Deep copy - побитовое копирование
-		for (int i = 0; i < size; i++) this->str[i] = other.str[i];
-		cout << "CopyConstructor:" << this << endl;
+    for (int i = 0; i < size; i++) this->str[i] = other.str[i];
+    cout << "CopyConstructor:" << this << endl;
 }
-String(String&& other)noexcept:size(other.size),str(other.str)
+String::String(String&& other)noexcept :size(other.size), str(other.str)
 {
     //Shallow copy - поверхностное копирование
     other.size = 0;
@@ -50,13 +86,13 @@ String(String&& other)noexcept:size(other.size),str(other.str)
 }
 
 //Destructor
-~String()
+String::~String()
 {
     delete this->str;
     cout << "Destructor:\t" << this << endl;
 }
 //Operators
-String& operator=(const String& other)
+String& String::operator=(const String& other)
 {
     //			l-value = r-value;
     if (this == &other)return *this;
@@ -69,7 +105,7 @@ String& operator=(const String& other)
     return *this;
 }
 
-String& operator=(String&& other)noexcept
+String& String::operator=(String&& other)noexcept
 {
     this->size = other.size;
     this->str = other.str;
@@ -78,27 +114,26 @@ String& operator=(String&& other)noexcept
     cout << "MoveAssignment:\t" << this << endl;
     return *this;
 }
-String& operator+=(const String& other)
+String& String::operator+=(const String& other)
 {
     return *this = *this + other;
 }
-const char& operator[](int i)const
+const char& String::operator[](int i)const
 {
     return str[i];
 }
-char& operator[](int i)
+char& String::operator[](int i)
 {
     return str[i];
 }
 
 //Metods
-void print()const
+void String::print()const
 {
     cout << "Size:\t" << size << endl;
     cout << "Str:\t" << str << endl;
 }
 
-};
 
 String operator+(const String& left, const String& right)
 {
@@ -116,7 +151,8 @@ std::ostream& operator<<(std::ostream& os, const String& obj)//перегруз�
 {
     return os << "Str:\t" << obj.get_str();
 }
-
+///////////////////////////////////////////////////////////////////////////////////////
+////////////КОНЕЦ ОПРЕДЕЛЕНИЯ КЛАССА - CLASS DEFENISION END////////////////////////////
 
 #define BASE_CHECK
 //#define CALLING_CONSTRUCTORS
