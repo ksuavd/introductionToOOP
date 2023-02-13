@@ -26,38 +26,27 @@ public:
     }
 
 //Constructors
-explicit String(int size = 80) //конст-р с параметром по умолчанию
+    explicit String(int size = 80):size(size), str (new char[size] {}) //конст-р с параметром по умолчанию
 {
-    this->size = size;
-    this->str = new char[size] {};//выделение памяти для строки
     cout << "DefConstructor:\t" << this << endl;
 }
-String(const char* str)
+    String(const char* str) :size(strlen(str) + 1), str(new char [size] {})
 {
-    this->size = strlen(str) + 1;//вычисляем размер строки 
-    this->str = new char[size] {};// выделение памяти + 1 на терминрующ. 0
     for (int i = 0; i < size; i++)// перебираем циклом каждый элемент полученного массива и каждый символ скопировать в указатель
     {
         this->str[i] = str[i];
     }
     cout << "1ArgConstructor:\t" << this << endl;
-    //this->str[size] = '\0';// обозначаем конец строки, в последний элемент присваиваем терм. 0
 }
-
-String (const String& other) //Shallow copy -поверхностное копирование
+String (const String& other):size(other.size), str (new char[size] {}) //Shallow copy -поверхностное копирование
 {
     //Deep copy - побитовое копирование
-		this->size = other.size;
-		this->str = new char[size] {};
-		for (int i = 0; i < size; i++)
-			this->str[i] = other.str[i];
+		for (int i = 0; i < size; i++) this->str[i] = other.str[i];
 		cout << "CopyConstructor:\t" << endl;
 }
-String(String&& other)noexcept
+String(String&& other)noexcept:size(other.size),str(other.str)
 {
     //Shallow copy - поверхностное копирование
-    this->size = other.size;
-    this->str = other.str;		//Shallow copy
     other.size = 0;
     other.str = nullptr;		//nullptr - это указатель на ноль.
     cout << "MoveConstructor:" << this << endl;
@@ -70,7 +59,7 @@ String(String&& other)noexcept
     cout << "Destructor:\t" << this << endl;
 }
 //Operators
-String& operator=(const String& other) // оператор присваивания
+String& operator=(const String& other)
 {
     //			l-value = r-value;
     if (this == &other)return *this;
@@ -132,14 +121,14 @@ std::ostream& operator<<(std::ostream& os, const String& obj)//перегруз�
 }
 
 
-//#define BASE_CHECK
-
+#define BASE_CHECK
+//#define CALLING_CONSTRUCTORS
 int main()
 {
   setlocale(LC_ALL, "");
 #ifdef BASE_CHECK
-    //String str1 (5);
-    //str1.print();
+    String str (5);
+    str.print();
 
    String str1 = "Hello"; // "Hello" - это строковая константа
    str1 = str1;
@@ -160,10 +149,11 @@ int main()
    cout << str3 << endl;
 
    String str4 = str3;//Copy constructor
-   
+   str4.print();
     //str1=str3;
    // cout << str1 << endl;
 #endif // BASE_CHECK
+#ifdef CALLING_CONSTRUCTORS
     String str1;	             //Default constructor
 	str1.print();
 
@@ -185,7 +175,7 @@ int main()
     str7.print();
     String str8{ str7 };      // Copy constructor
     str8.print();
-
+#endif //CALLING_CONSTRUCTORS
 
 }
 
