@@ -69,7 +69,7 @@ String& operator=(const String& other)
     return *this;
 }
 
-String& operator=(String&& other)
+String& operator=(String&& other)noexcept
 {
     this->size = other.size;
     this->str = other.str;
