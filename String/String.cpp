@@ -30,19 +30,16 @@ public:
 {
     cout << "DefConstructor:\t" << this << endl;
 }
-    String(const char* str) :size(strlen(str) + 1), str(new char [size] {})
-{
-    for (int i = 0; i < size; i++)// перебираем циклом каждый элемент полученного массива и каждый символ скопировать в указатель
-    {
-        this->str[i] = str[i];
-    }
-    cout << "1ArgConstructor:\t" << this << endl;
+    String(const char* str) :String (strlen(str)+1)
+ {
+    for (int i = 0; i < size; i++)  this->str[i] = str[i];
+    cout << "1ArgConstructor:" << this << endl;
 }
-String (const String& other):size(other.size), str (new char[size] {}) //Shallow copy -поверхностное копирование
+String (const String& other):String(other.str)
 {
     //Deep copy - побитовое копирование
 		for (int i = 0; i < size; i++) this->str[i] = other.str[i];
-		cout << "CopyConstructor:\t" << endl;
+		cout << "CopyConstructor:" << this << endl;
 }
 String(String&& other)noexcept:size(other.size),str(other.str)
 {
