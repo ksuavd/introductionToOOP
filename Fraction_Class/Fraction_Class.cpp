@@ -49,7 +49,7 @@ public:
 		reduce();
 		cout << "DConstructor:\t\t" << this << endl;
 	}
-	explicit Fraction(int integer):integer(integer), numerator(0), denominator(1)
+	explicit Fraction(int integer):Fraction(integer, 0, 1)
 	{
 		cout << "1ArgConstructor:\t" << this << endl;
 	}
@@ -85,7 +85,7 @@ public:
 		this->integer = other.integer;
 		this->numerator = other.numerator;
 		this->denominator = other.denominator;
-		cout << "CopyAssignment:\t" << this << endl;
+		cout << "CopyAssignment:\t\t" << this << endl;
 		return *this;
 	}
 	Fraction& operator*=(const Fraction& other)
@@ -257,13 +257,13 @@ std::istream& operator>>(std::istream& is, Fraction& obj)
 
 //#define CONSTRUCTORS_CHECK
 //#define ARITHMETICAL_OPERATORS_CHECK
-#define COMPARISON_OPERATORS
+//#define COMPARISON_OPERATORS
 //#define TYPE_CONVERSIONS_BASICS
 //#define CONVERSION_FROM_OTHER_TO_CLASS
 //#define CONVERSION_FROM_CLASS_TO_OTHER
 
 //#define HOME_WORK_1
-#define HOME_WORK_2
+//#define HOME_WORK_2
 
 void main()
 {
@@ -375,12 +375,19 @@ operator type()const
 #endif // HOME_WORK_2
 
 	Fraction A;
-	cout << "Введите простую дробь: "; cin >> A;
+	//cout << "Введите простую дробь: "; cin >> A;
 	/*
 		5;
 		1/2;
 		2(3/4);
 		2 3/4;
 	*/
-cout << A << endl;
+//cout << A << endl;
+	Fraction B;
+	B = Fraction(8,3,5);		
+	cout << B  << endl;
+	Fraction C = Fraction(8);
+	cout << C << endl;
+
+
 }
