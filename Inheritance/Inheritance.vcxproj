@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6e24df3c-ca35-4873-a544-465c92aa52c2}</ProjectGuid>
-    <RootNamespace>FractionClass</RootNamespace>
+    <ProjectGuid>{331a1b60-f4b9-4a67-867d-e78434385b42}</ProjectGuid>
+    <RootNamespace>Inheritance</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,11 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Fraction.cpp" />
-    <ClCompile Include="Fraction_Class.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Fraction.h" />
+    <ClCompile Include="Inheritance.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
